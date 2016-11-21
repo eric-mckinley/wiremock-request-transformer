@@ -1,0 +1,109 @@
+<html>
+<head>
+    <title>Wiremock 404</title>
+    <style>
+        h3 {
+            color: #333;
+            font-family: Helvetica, Arial, sans-serif;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table {
+            color: #333;
+            font-family: Helvetica, Arial, sans-serif;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        span {
+            font-size: 12px;
+            color: #a1a2a1;
+
+        }
+
+        td, th {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #CCC;
+            height: 30px;
+        }
+
+        th {
+            background: #F3F3F3;
+            font-weight: bold;
+        }
+
+        td {
+            background: #FAFAFA;
+            text-align: left;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+<h3>
+   Wiremock 404 - No mocked URL: ${request.url}
+</h3>
+
+<table>
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th  colspan='2'>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Absolute URL</td>
+        <td  colspan='2'>${request.absoluteUrl}</td>
+    </tr>
+    <tr>
+        <td>Schema</td>
+        <td  colspan='2'>${request.schema}</td>
+    </tr>
+    <tr>
+        <td>Server</td>
+        <td colspan='2'>${request.server}</td>
+    </tr>
+    <tr>
+        <td>Port</td>
+        <td colspan='2'>${request.port}</td>
+    </tr>
+    <tr>
+        <td>ClientIP</td>
+        <td colspan='2'>${request.clientIp}</td>
+    </tr>
+    <tr>
+        <td>URL</td>
+        <td colspan='2'>${request.url}</td>
+    </tr>
+    <tr>
+        <td>Path</td>
+        <td colspan='2'>${request.path}</td>
+    </tr>
+    #foreach($param in ${request.params})
+    <tr>
+        <td>Param</td>
+        <td>${param.name}</td>
+        <td>${param.value}</td>
+    </tr>
+    #end
+    #foreach($cookie in ${request.cookies})
+    <tr>
+        <td>Cookie</td>
+        <td>${cookie.name}</td>
+        <td>${cookie.value}</td>
+    </tr>
+    #end
+    #foreach($header in ${request.headers})
+    <tr>
+        <td>Header</td>
+        <td>${header.name}</td>
+        <td>${header.value}</td>
+    </tr>
+    #end
+    </tbody>
+</table>
+</body>
+</html>
